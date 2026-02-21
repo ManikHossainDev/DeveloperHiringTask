@@ -1,18 +1,18 @@
- // adjust the import path as needed
-import type { Metadata } from "next";
+
+import Cartdealis from "@/components/Pages/Cart/cartDealis";
 import Allproductscarousel from "@/components/Pages/Product/Allproductscarousel";
-import ProductHero from "@/components/Pages/Product/ProductHero";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "All Products | Zavisoft",
+  title: "Cart | Zavisoft",
   description:
-    "Browse all available products with detailed information, prices, and latest offers.",
+    "Review your selected products, update quantities, and proceed to checkout securely.",
 };
 
 const Page = () => {
   return (
     <div>
-      <ProductHero />
+        <Cartdealis />
       <div className="py-[40px]">
         <Allproductscarousel />
       </div>

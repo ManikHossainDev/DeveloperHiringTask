@@ -6,7 +6,7 @@ import Providers from '../lib/Providers';
 
 export const metadata: Metadata = {
   title: {
-    default: "Event Websites | Zavisoft Frontend Task",
+    default: "Zavisoft",
     template: "%s | Event Websites",
   },
   description:

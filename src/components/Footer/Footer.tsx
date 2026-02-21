@@ -10,6 +10,7 @@ import {
   FaTiktok,
   FaPlus,
 } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 
 
@@ -149,9 +150,9 @@ const NewsletterForm = () => {
 
 
 const AboutCol = () => (
-  <div className="col-span-2 sm:col-span-1">
+  <div className="col-span-2 ">
     <SectionHeading>About us</SectionHeading>
-    <p className="text-white text-sm leading-relaxed max-w-[210px]">
+    <p className="text-white text-sm leading-relaxed max-w-[250px]">
       We are the biggest hyperstore in the universe. We got you all cover with
       our exclusive collections and latest drops.
     </p>
@@ -236,16 +237,22 @@ const Footer = () => {
                 mobile  → 2 cols
                 tablet  → 2 cols
                 desktop → 4 cols  */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 pb-10">
+            <div className="md:flex justify-between">
               <AboutCol />
               <CategoriesCol />
               <CompanyCol />
               <SocialsCol />
             </div>
 
-           <div className='w-full flex justify-center'>
-             <Image className='w-full' width={500} height={500} src={fImage} alt="manik" />
-           </div>
+           <motion.div
+  initial={{ opacity: 0, y: 100 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: false, amount: 0.3 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  className='w-full flex justify-center pt-5'
+>
+  <Image className='w-full' width={500} height={500} src={fImage} alt="manik" />
+</motion.div>
           </div>
         </div>
 

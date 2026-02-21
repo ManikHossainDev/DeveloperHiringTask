@@ -134,13 +134,13 @@ const Navbar = ({ cartCount = 0, user = null }) => {
             </button>
 
             {/* Cart */}
-            <button
+            <Link href="/cart"
               aria-label={`Cart (${cartCount})`}
               className="w-10 h-10 flex items-center justify-center rounded-full bg-[#f5a623] text-[#1a1a1a] text-[13px] font-bold hover:bg-[#e09610] hover:scale-105 transition-all duration-150"
               style={{ fontFamily: "'Barlow', sans-serif" }}
             >
               {cartCount}
-            </button>
+            </Link>
 
             {/* Mobile menu button */}
             <button

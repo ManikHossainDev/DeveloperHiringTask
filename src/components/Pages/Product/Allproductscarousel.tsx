@@ -6,155 +6,11 @@ import { FiShoppingBag } from "react-icons/fi";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
-
-const products = [
-  {
-    id: 1,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Black / Orbit Grey",
-  },
-  {
-    id: 2,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "White / Vivid Red",
-  },
-  {
-    id: 3,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Dark Green / Off White",
-  },
-  {
-    id: 4,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Solar Orange / Black",
-  },
-  {
-    id: 5,
-    badge: "Hot",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 140,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Navy / Gold",
-  },
-  {
-    id: 6,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Purple / White",
-  },
-  {
-    id: 7,
-    badge: "Sale",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 99,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Coral / Sand",
-  },
-  {
-    id: 8,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Sky Blue / White",
-  },
-  {
-    id: 9,
-    badge: "Hot",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 140,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Red / Black",
-  },
-  {
-    id: 10,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Mint / Grey",
-  },
-  {
-    id: 11,
-    badge: "Sale",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 109,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Yellow / Black",
-  },
-  {
-    id: 12,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Olive / Cream",
-  },
-  {
-    id: 13,
-    badge: "Hot",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 140,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Teal / White",
-  },
-  {
-    id: 14,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Burgundy / Silver",
-  },
-  {
-    id: 15,
-    badge: "Sale",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 95,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Charcoal / Neon",
-  },
-  {
-    id: 16,
-    badge: "New",
-    name: "Adidas 4DFWD X Parley Running Shoes",
-    price: 125,
-    image:
-      "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    color: "Rose Gold / White",
-  },
-];
+import { useGetProductQuery } from "@/redux/features/product/product";
 
 const Allproductscarousel = () => {
+  const { data } = useGetProductQuery({});
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     slidesToScroll: 1,
@@ -212,7 +68,6 @@ const Allproductscarousel = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          {/* Prev Button */}
           <button
             onClick={scrollPrev}
             disabled={prevDisabled}
@@ -220,17 +75,10 @@ const Allproductscarousel = () => {
             aria-label="Previous"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M10 3L5 8L10 13"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
 
-          {/* Next Button */}
           <button
             onClick={scrollNext}
             disabled={nextDisabled}
@@ -238,13 +86,7 @@ const Allproductscarousel = () => {
             aria-label="Next"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M6 3L11 8L6 13"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
@@ -253,7 +95,7 @@ const Allproductscarousel = () => {
       {/* Embla Carousel Viewport */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex gap-5">
-          {products.map((product, index) => (
+          {data?.map((product: { id: number; title: string; price: number; images: string[] }, index: number) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 60, scale: 0.95 }}
@@ -274,16 +116,11 @@ const Allproductscarousel = () => {
               <div className="bg-[#FAFAFA] border-2 border-[#FFFFFF] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group">
                 {/* Image area */}
                 <div className="relative px-6 pt-6 pb-4">
-                  {/* Badge */}
-                  <span className="absolute top-3 left-3 bg-[#1a6eff] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-tl-full rounded-br-full z-10">
-                    {product.badge}
-                  </span>
-
                   {/* Shoe image */}
                   <div className="relative h-40 md:h-60 flex items-center justify-center overflow-hidden">
                     <Image
-                      src={product.image}
-                      alt={product.name}
+                      src={product.images[0]}
+                      alt={product.title}
                       width={200}
                       height={144}
                       className="h-36 md:h-48 w-auto object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-lg"
@@ -294,10 +131,7 @@ const Allproductscarousel = () => {
                       }}
                     />
                     {/* Fallback */}
-                    <div
-                      className="hidden absolute inset-0 items-center justify-center text-gray-300"
-                      style={{ display: "none" }}
-                    >
+                    <div className="hidden absolute inset-0 items-center justify-center text-gray-300">
                       <FiShoppingBag size={48} />
                     </div>
                   </div>
@@ -313,7 +147,7 @@ const Allproductscarousel = () => {
                     letterSpacing: "0.03em",
                   }}
                 >
-                  {product.name}
+                  {product.title.slice(0, 20)}{product.title.length > 10 ? "..." : ""}
                 </p>
 
                 <button className="w-full flex items-center justify-between bg-[#111] hover:bg-[#333] text-white px-4 py-2.5 rounded-lg transition-colors duration-200">

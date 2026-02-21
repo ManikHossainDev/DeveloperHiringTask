@@ -4,41 +4,10 @@ import { useRef, useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 import CategoryCard from "./CategoryCard";
-
-const categories = [
-  {
-    id: 1,
-    title: "LIFESTYLE\nSHOES",
-    image: "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    alt: "Lifestyle Shoes",
-  },
-  {
-    id: 2,
-    title: "BASKETBALL\nSHOES",
-    image: "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    alt: "Basketball Shoes",
-  },
-  {
-    id: 3,
-    title: "RUNNING\nSHOES",
-    image: "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    alt: "Running Shoes",
-  },
-  {
-    id: 4,
-    title: "TRAINING\nSHOES",
-    image: "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    alt: "Training Shoes",
-  },
-  {
-    id: 5,
-    title: "OUTDOOR\nSHOES",
-    image: "https://png.pngtree.com/png-vector/20241018/ourmid/pngtree-running-shoes-or-sneakers-on-a-transparent-background-png-image_14112954.png",
-    alt: "Outdoor Shoes",
-  },
-];
+import { useGetCategoriesQuery } from "@/redux/features/product/product";
 
 const Categories = () => {
+  const { data } = useGetCategoriesQuery({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -56,7 +25,7 @@ const Categories = () => {
   };
 
   const scrollRight = () => {
-    const newIndex = Math.min(activeIndex + 1, categories.length - 1);
+    const newIndex = Math.min(activeIndex + 1, (data?.length ?? 1) - 1);
     setActiveIndex(newIndex);
     scrollRef.current?.scrollBy({ left: getCardWidth(), behavior: "smooth" });
   };
@@ -72,7 +41,7 @@ const Categories = () => {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <h2 className="text-xl sm:text-2xl  md:text-4xl font-black tracking-widest uppercase">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-black tracking-widest uppercase">
             Categories
           </h2>
           <div className="flex gap-2">
@@ -80,13 +49,13 @@ const Categories = () => {
               onClick={scrollLeft}
               disabled={activeIndex === 0}
               aria-label="Previous"
-              className="w-9 h-9 flex items-center justify-center hover:bg-[#2a2a2a] bg-[#1c1b1b]  disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-200 rounded-sm"
+              className="w-9 h-9 flex items-center justify-center hover:bg-[#2a2a2a] bg-[#1c1b1b] disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-200 rounded-sm"
             >
               <FiArrowLeft size={16} />
             </button>
             <button
               onClick={scrollRight}
-              disabled={activeIndex === categories.length - 1}
+              disabled={activeIndex === (data?.length ?? 1) - 1}
               aria-label="Next"
               className="w-9 h-9 flex items-center justify-center hover:bg-[#2a2a2a] bg-[#1c1b1b] disabled:opacity-30 disabled:cursor-not-allowed transition-colors duration-200 rounded-sm"
             >
@@ -98,15 +67,24 @@ const Categories = () => {
         {/* Carousel */}
         <motion.div
           ref={scrollRef}
-          className="flex  rounded-tl-[60px] overflow-x-auto scroll-smooth"
+          className="flex rounded-tl-[60px] overflow-x-auto scroll-smooth"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          {categories.map((cat, i) => (
-            <CategoryCard key={cat.id} category={cat} index={i} />
+          {data?.slice(1, ).map((cat: { id: number; name: string; image: string }, i: number) => (
+            <CategoryCard
+              key={cat.id}
+              category={{
+                id: cat.id,
+                title: cat.name,
+                image: cat.image,
+                alt: cat.name,
+              }}
+              index={i}
+            />
           ))}
         </motion.div>
       </div>

@@ -5,7 +5,8 @@ import { RootState } from "../store";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.recoverylink.co",
+    // baseUrl: "https://fakeapi.platzi.com/en",
+    baseUrl: "https://api.escuelajs.co/api/v1",
     prepareHeaders: (headers, { getState }) => {
       // Extract the token correctly by parsing the stringified token object
       const token = (getState() as RootState).auth.token?.replace(/['"]+/g, "");
@@ -16,17 +17,6 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: [
-    "agreement",
-    "Profile",
-    "user",
-    "product",
-    "rating",
-    "Payment",
-    "PricingPlans",
-    "RestorationApplication",
-    "User",
-    "settings",
-  ],
+  tagTypes: ["product", "categories"],
   endpoints: () => ({}),
 });
