@@ -387,3 +387,26 @@ const Cartdealis = () => {
 };
 
 export default Cartdealis;
+
+const alldata =  {
+    "id": 4,
+    "title": "Classic Grey Hooded Sweatshirt",
+    "slug": "classic-grey-hooded-sweatshirt",
+    "price": 90,
+    "description": "Elevate your casual wear with our Classic Grey Hooded Sweatshirt. Made from a soft cotton blend, this hoodie features a front kangaroo pocket, an adjustable drawstring hood, and ribbed cuffs for a snug fit. Perfect for those chilly evenings or lazy weekends, it pairs effortlessly with your favorite jeans or joggers.",
+    "category": {
+      "id": 1,
+      "name": "Updated Category Name",
+      "slug": "updated-category-name",
+      "image": "https://placeimg.com/640/480/nature",
+      "creationAt": "2026-02-20T18:08:25.000Z",
+      "updatedAt": "2026-02-21T14:35:06.000Z"
+    },
+    "images": [
+      "https://i.imgur.com/R2PN9Wq.jpeg",
+      "https://i.imgur.com/IvxMPFr.jpeg",
+      "https://i.imgur.com/7eW9nXP.jpeg"
+    ],
+    "creationAt": "2026-02-20T18:08:25.000Z",
+    "updatedAt": "2026-02-20T18:08:25.000Z"
+  },
